@@ -1,0 +1,4 @@
+[submodule "src"]
+	path = src
+	url = https://github.com/tensorflow/tensorflow.git
+	branch = r1.7
