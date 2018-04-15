@@ -7,7 +7,7 @@
 Initialize source repo 
 
 ### build
-Build docker image according to configuration, have a look at the Dockerfile
+Build docker image according to configuration, have a look at the script
 
 ### update
 Update source repo
