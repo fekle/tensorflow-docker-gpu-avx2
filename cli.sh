@@ -26,7 +26,7 @@ case "${1:-}" in
 
     # build tensorflow docker image
     cd src
-    ./tensorflow/tools/docker/parameterized_docker_build.sh
+    exec ./tensorflow/tools/docker/parameterized_docker_build.sh
     ;;
   clean)
     # cleanup dir
