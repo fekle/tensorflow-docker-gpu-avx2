@@ -2,7 +2,7 @@
 set -euf -o pipefail
 
 # tensorflow version to build
-export TF_BRANCH='r1.7'
+export TF_BRANCH='r1.8'
 export TF_REPO='https://github.com/tensorflow/tensorflow.git'
 
 # tf-docker configuration
