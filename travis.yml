@@ -1,0 +1,18 @@
+sudo: required
+
+language: generic
+
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+before_script:
+  - set -euf
+  - ./cli.sh init
+
+script:
+  - set -euf
+  - ./cli.sh build
