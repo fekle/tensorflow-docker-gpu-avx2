@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/fekle/tensorflow-docker-gpu-avx2.svg?branch=master)](https://travis-ci.org/fekle/tensorflow-docker-gpu-avx2)
 
 ## Usage
-`usage: ./cli.sh <init|build|update|clean|reset>`
+`./cli.sh <init|build|update|clean|reset>`
 
 ### init
 Initialize source repo
