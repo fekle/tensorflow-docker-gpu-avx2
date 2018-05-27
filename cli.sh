@@ -51,14 +51,17 @@ reset)
   ;;
 travis_setup)
   sudo -v
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt-get update -q
+  sudo apt-get purge docker docker-engine docker.io docker-ce docker-ee
+  sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+  echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
   curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
   curl -fsSL 'https://nvidia.github.io/nvidia-docker/gpgkey' | sudo apt-key add -
   curl -fsSL "https://nvidia.github.io/nvidia-docker/$(
     source /etc/os-release
     echo $ID$VERSION_ID
   )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-  sudo apt-get update
+  sudo apt-get update -q
   sudo apt-get install -y nvidia-docker2
   sudo systemctl restart docker
   ;;
