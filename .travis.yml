@@ -9,10 +9,7 @@ branches:
 services:
   - docker
 
-before_script:
-  - set -euf
-  - ./cli.sh init
-
 script:
   - set -euf
+  - ./cli.sh init
   - ./cli.sh build
