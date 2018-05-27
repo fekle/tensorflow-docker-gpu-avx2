@@ -18,7 +18,7 @@ function main() {
   case "${1:-}" in
   init)
     # initialize src
-    git clone -b "${TF_BRANCH}" --single-branch "${TF_REPO}" src
+    git clone -b "${TF_BRANCH}" --depth 1 --single-branch "${TF_REPO}" src
     main update
     ;;
   build)
