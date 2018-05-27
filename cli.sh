@@ -63,7 +63,7 @@ travis_setup)
   )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
   sudo apt-get update -q
   sudo apt-get install -y nvidia-docker2
-  service docker restart
+  /etc/init.d/docker restart
   ;;
 *)
   echo "usage: ${0} <init|build|update|clean|reset>"
