@@ -10,9 +10,6 @@ branches:
   only:
   - master
 
-services:
-  - docker
-
 before_script:
   - ./cli.sh travis_setup
   - ./cli.sh init
