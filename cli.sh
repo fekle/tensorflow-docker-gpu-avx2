@@ -15,19 +15,6 @@ export TF_DOCKER_BUILD_PUSH_CMD="docker push"
 export TF_SKIP_CONTRIB_TESTS=true
 
 case "${1:-}" in
-deps)
-  sudo -v
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
-  curl -s -L 'https://nvidia.github.io/nvidia-docker/gpgkey' | sudo apt-key add -
-  curl -s -L "https://nvidia.github.io/nvidia-docker/$(
-    source /etc/os-release
-    echo $ID$VERSION_ID
-  )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-  sudo apt-get update
-  sudo apt-get install -y docker-ce nvidia-docker2
-  sudo systemctl restart docker
-  ;;
 init)
   # initialize src
   git clone -b "${TF_BRANCH}" --single-branch "${TF_REPO}" src
@@ -61,6 +48,19 @@ reset)
   # completely reset src repository if desired
   rm -rf src
   "${0}" init
+  ;;
+travis_setup)
+  sudo -v
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
+  curl -fsSL 'https://nvidia.github.io/nvidia-docker/gpgkey' | sudo apt-key add -
+  curl -fsSL "https://nvidia.github.io/nvidia-docker/$(
+    source /etc/os-release
+    echo $ID$VERSION_ID
+  )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  sudo apt-get update
+  sudo apt-get install -y docker-ce nvidia-docker2
+  sudo systemctl restart docker
   ;;
 *)
   echo "usage: ${0} <init|build|update|clean|reset>"
