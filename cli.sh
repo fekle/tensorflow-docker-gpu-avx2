@@ -15,6 +15,14 @@ export TF_DOCKER_BUILD_PUSH_CMD="docker push"
 export TF_SKIP_CONTRIB_TESTS=true
 
 case "${1:-}" in
+deps)
+  curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add -
+  distribution=$(. /etc/os-release echo $ID$VERSION_ID)
+  curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  sudo apt-get update
+  sudo apt-get install -y nvidia-docker2
+  sudo pkill -SIGHUP dockerd
+  ;;
 init)
   # initialize src
   git clone -b "${TF_BRANCH}" --single-branch "${TF_REPO}" src

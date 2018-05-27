@@ -10,4 +10,4 @@ services:
   - docker
 
 script:
-  - ./cli.sh init && ./cli.sh build
+  - ./cli.sh deps && ./cli.sh init && ./cli.sh build
