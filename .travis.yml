@@ -10,6 +10,4 @@ services:
   - docker
 
 script:
-  - set -euf
-  - ./cli.sh init
-  - ./cli.sh build
+  - ./cli.sh init && ./cli.sh build
