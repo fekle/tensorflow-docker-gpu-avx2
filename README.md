@@ -1,10 +1,11 @@
 # Tensorflow Docker AVX2
+[![Build Status](https://travis-ci.org/fekle/tensorflow-docker-gpu-avx2.svg?branch=master)](https://travis-ci.org/fekle/tensorflow-docker-gpu-avx2)
 
 ## Usage
 `usage: ./cli.sh <init|build|update|clean|reset>`
 
 ### init
-Initialize source repo 
+Initialize source repo
 
 ### build
 Build docker image according to configuration, have a look at the script
