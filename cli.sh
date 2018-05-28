@@ -64,7 +64,7 @@ function main() {
       echo $ID$VERSION_ID
     )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
     sudo apt-get update -q
-    sudo apt-get install -y nvidia-docker2
+    sudo apt-get install -y nvidia-384 nvidia-docker2
 
     sudo pkill -SIGHUP dockerd
 
