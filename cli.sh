@@ -67,10 +67,8 @@ function main() {
 
     sudo apt-get update -q
 
-    sudo apt-get install -y --no-install-recommends nvidia-384 nvidia-modprobe
     sudo apt-get install -y --no-install-recommends nvidia-docker2
 
-    nvidia-modprobe
     sudo pkill -SIGHUP dockerd
 
     docker run --runtime=nvidia --rm alpine echo 'success'
