@@ -68,7 +68,7 @@ function main() {
 
     sudo pkill -SIGHUP dockerd
 
-    nvidia-docker ps
+    docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
     ;;
   *)
     echo "usage: ${0} <init|build|update|clean|reset>"
