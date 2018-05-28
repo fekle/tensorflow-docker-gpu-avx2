@@ -66,11 +66,9 @@ function main() {
     sudo apt-get update -q
     sudo apt-get install -y nvidia-docker2
 
-    nvidia-modprobe
-
     sudo pkill -SIGHUP dockerd
-    nvidia-docker ps
 
+    nvidia-docker ps
     ;;
   *)
     echo "usage: ${0} <init|build|update|clean|reset>"
