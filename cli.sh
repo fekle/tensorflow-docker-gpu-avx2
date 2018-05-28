@@ -13,6 +13,7 @@ export TF_DOCKER_BUILD_PYTHON_VERSION="PYTHON3"
 export TF_DOCKER_BUILD_OPTIONS="MAVX2_FMA"
 export TF_DOCKER_BUILD_PUSH_CMD="docker push"
 export TF_SKIP_CONTRIB_TESTS=true
+export NVIDIA_VISIBLE_DEVICES=void
 
 function main() {
   case "${1:-}" in
@@ -64,8 +65,12 @@ function main() {
     )/nvidia-docker.list" | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
     sudo apt-get update -q
     sudo apt-get install -y nvidia-docker2
+
+    nvidia-modprobe
+
     sudo pkill -SIGHUP dockerd
-    docker ps
+    nvidia-docker ps
+
     ;;
   *)
     echo "usage: ${0} <init|build|update|clean|reset>"
