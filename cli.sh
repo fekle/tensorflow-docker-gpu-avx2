@@ -66,9 +66,10 @@ function main() {
     sudo apt-get update -q
     sudo apt-get install -y nvidia-384 nvidia-docker2
 
+    nvidia-modprobe
     sudo pkill -SIGHUP dockerd
 
-    docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+    docker run --runtime=nvidia --rm alpine echo 'success'
     ;;
   *)
     echo "usage: ${0} <init|build|update|clean|reset>"
